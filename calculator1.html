@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Calculator</title> 
+  <link rel="stylesheet" href="style.css"> 
+ <style type="text/css" id="dcoder_stylesheet">{
+    margin: 0;
+    padding: 0;
+
+}
+body{
+    z-index: -1;
+    background-image: -webkit-linear-gradient(left, white,hsl(199, 66%, 71%));
+}
+h2{ margin-top: 20px;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: black;
+    text-align: center;
+    font-size: 3em;
+}
+
+.display-inp input{ 
+    height:60px; 
+    width: 530px;
+    border: 2px solid black;
+    font-size: 1.3em;
+} 
+
+.container{
+    border: 2px solid black;
+    box-shadow: 4px 6px 8px 2px rgb(0, 0, 0, 0.7), inset 3px 5px 7px 2px rgb(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 50px 30px 50px 30px;
+    border-radius: 10px;
+    background-color: rgba(109, 105, 105, 0.973);
+}
+.keys{
+    display: grid;
+    grid-template-columns: repeat(5,100px);
+    grid-template-rows: repeat(4,70px);
+    margin-top:20px ;
+    grid-gap:10px;
+   
+    
+}
+.keys button{
+    border: 2px solid black;
+    border-radius: 15px;
+    font-size: 1.1em;
+    transition: 0.2s;
+    color: #9fffff;
+    background: linear-gradient(#686464,#363535);
+    box-shadow:  inset 2px 6px 1px 0 rgba(0,0,0,0.35),
+    0 5px 5px rgba(0,0,0,0.5),
+    0 12px 20px rgba(0,0,0,0.35);
+}
+.keys button:hover{
+    background-color:black;
+    color: aliceblue;
+    cursor: pointer;
+}
+
+
+.keys button:active{
+    box-shadow: inset 0 2px 2px 0 rgba(0,0,0,0.35),
+    inset 0 5px 15px rgba(0,0,0,0.5),
+    inset 0 15px 25px rgba(0,0,0,0.35);
+    color: #fff;
+    text-shadow: 0 0 5px rgb(28, 14, 120), 0 0 8px rgb(28, 14, 120);
+}
+
+
+@media screen and (max-width:800px) {
+
+    h2{
+        font-size: 2em;
+    }
+
+    .keys{
+        display: grid;
+        grid-template-columns: repeat(5,90px);
+        grid-template-rows: repeat(4,60px);
+        margin-top:10px ;
+        grid-gap:7px;
+       
+        
+    }
+    .display-inp input {
+        width: 450px;
+
+    }
+    
+}</style></head> 
+ <body> 
+  <header> 
+   <h2>Calculator</h2> 
+  </header> 
+  <div class="container"> 
+   <div class="display-inp"> 
+    <input id="Display" name="Enter data" type="text"> 
+   </div> 
+   <div class="keys"> <button name="7" value="7" onclick="Calc(7)">7</button> <button name="8" value="8" onclick="Calc(8)">8</button> <button name="9" value="9" onclick="Calc(9)">9</button> <button name="+" value="+" onclick="Calc('+')">+</button> <button name="sin" value="sin" onclick="sinclick()">sin</button> <button name="4" value="4" onclick="Calc(4)">4</button> <button name="5" value="5" onclick="Calc(5)">5</button> <button name="6" value="6" onclick="Calc(6)">6</button> <button name="-" value="-" onclick="Calc('-')">-</button> <button name="cos" value="cos" onclick="cosclick()">cos</button> <button name="1" value="1" onclick="Calc(1)">1</button> <button name="2" value="2" onclick="Calc(2)">2</button> <button name="3" value="3" onclick="Calc(3)">3</button> <button name="*" value="*" onclick="Calc('*')">*</button> <button name="tan" value="tan" onclick="tanclick()">tan</button> <button name="0" value="0" onclick="Calc(0)">0</button> <button name="C" value="C" onclick="Clear()">C</button> <button name="=" value="=" onclick="Answer()">=</button> <button name="/" value="/" onclick="Calc('/')">/</button> <button name="log" value="log" onclick="logclick()">log</button> 
+   </div> 
+  </div> 
+  <script src="main.js"></script> 
+ 
+<script type="text/javascript" id="dcoder_script">let display=document.getElementById("Display")
+
+let Calc = (Number) => display.value +=Number;
+
+function Clear(){
+    display.value=""
+}
+
+function Answer(){
+    display.value=eval(display.value)
+}
+
+function sinclick(){
+    
+    var x = display.value;
+    display.value = Math.sin(x * Math.PI / 180).toFixed(2);
+    
+}
+function cosclick(){
+    var x = display.value;
+    display.value = Math.cos(x * Math.PI / 180).toFixed(2);
+    
+}
+function tanclick(){
+    var x = display.value;
+    display.value = Math.tan(x * Math.PI / 180).toFixed(2);
+    
+}
+
+function logclick(){
+    var x= display.value;
+    if(x<0)
+   { x=-x;}
+
+    display.value=Math.log10(x);
+}</script></body></html>
